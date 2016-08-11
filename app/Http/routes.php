@@ -17,4 +17,8 @@ Route::get('/', function () {
 
 Route::auth();
 
+Route::group(['middleware' => ['web']], function(){
+	Route::resource('task','TaskController');
+});
+
 Route::get('/home', 'HomeController@index');
