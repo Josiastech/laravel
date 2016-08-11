@@ -1,11 +1,8 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
-
+use App\Http\Requests\TaskRequest;
 class TaskController extends Controller
 {
     /**
@@ -15,9 +12,8 @@ class TaskController extends Controller
      */
     public function index()
     {
-        //
+        return view('tasks.index');
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -27,21 +23,19 @@ class TaskController extends Controller
     {
         return view('tasks.new');
     }
-
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TaskRequest $request)
     {
         $request->user()->tasks()->create([
             'name' => $request->name,
-        ]);
-        return "Tarea agregada correctamente";
+            ]);
+        return redirect('/task')->with('success', 'Tarea ceada correctamente');
     }
-
     /**
      * Display the specified resource.
      *
@@ -52,7 +46,6 @@ class TaskController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -63,7 +56,6 @@ class TaskController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -75,7 +67,6 @@ class TaskController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *
