@@ -29,6 +29,7 @@ class AuthController extends Controller
      * @var string
      */
     protected $redirectTo = '/';
+    protected $username = 'name';
 
     /**
      * Create a new authentication controller instance.
@@ -45,10 +46,11 @@ class AuthController extends Controller
      *
      * @return     <type>  ( description_of_the_return_value )
      */
-    public function loginUsername()
+    /*public function loginUsername()
     {
         return property_exists($this, 'username') ? $this->username : 'name';
-    }
+    }*/
+
 
     /**
      * Get a validator for an incoming registration request.
